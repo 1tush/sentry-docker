@@ -1,0 +1,24 @@
+redis:
+    image: redis
+db:
+    image: postgres
+    volumes:
+        - "./db_data:/var/lib/postgresql/data"
+web:
+    image: sentry
+    links:
+        - "db:postgres"
+        - "redis:redis"
+    volumes:
+        - "./sentry-config:/home/user/.sentry"
+    ports:
+        - "8080:9000"
+celery:
+    image: sentry
+    links:
+        - "db:postgres"
+        - "redis:redis"
+    volumes:
+        - "./sentry-config:/home/user/.sentry"
+    command: "sentry celery worker -B"
+
