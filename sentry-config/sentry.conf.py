@@ -189,4 +189,5 @@ MAILGUN_API_KEY = ''
 # If this file ever becomes compromised, it's important to regenerate your SECRET_KEY
 # Changing this value will result in all current sessions being invalidated
 SECRET_KEY = 'SW8l6ddSeyqARUbryuF4HMlEAS3hkuS/LM+7GeKXIbcc06N3RA5CGg=='
-from sentry.conf.local import *
+
+execfile(os.path.join(os.path.dirname(__file__),'sentry.conf.local.py'))
