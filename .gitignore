@@ -1,2 +1,3 @@
 db_data
 sentry-config/sentry.conf.local.py
+tmp/
