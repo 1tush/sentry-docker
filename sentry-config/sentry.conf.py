@@ -149,6 +149,8 @@ SENTRY_FILESTORE_OPTIONS = {
 # You MUST configure the absolute URI root for Sentry:
 SENTRY_URL_PREFIX = os.environ.get('SENTRY_URL_PREFIX', 'http://sentry.online-lab.ru')
 
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split()
+
 # If you're using a reverse proxy, you should enable the X-Forwarded-Proto
 # header and uncomment the following settings
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
