@@ -5,22 +5,24 @@ db:
     volumes:
         - "./db_data:/var/lib/postgresql/data"
 web:
-    image: sentry
+    build: .
     links:
         - "db:postgres"
         - "redis:redis"
     volumes:
         - "./sentry-config:/home/user/.sentry"
         - "./tmp:/tmp"
+    env_file: "./private/.env"
     ports:
         - "8080:9000"
 celery:
-    image: sentry
+    build: .
     links:
         - "db:postgres"
         - "redis:redis"
     volumes:
         - "./sentry-config:/home/user/.sentry"
         - "./tmp:/tmp"
+    env_file: "./private/.env"
     command: "sentry celery worker -B"
 

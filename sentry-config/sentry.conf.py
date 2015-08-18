@@ -42,7 +42,7 @@ SENTRY_USE_BIG_INTS = True
 # the beacon documentation for more information. This **must** be a string.
 
 # SENTRY_ADMIN_EMAIL = 'your.name@example.com'
-SENTRY_ADMIN_EMAIL = ''
+SENTRY_ADMIN_EMAIL = os.environ.get('SENTRY_ADMIN_EMAIL', '')
 
 # Instruct Sentry that this install intends to be run by a single organization
 # and thus various UI optimizations should be enabled.
@@ -147,7 +147,7 @@ SENTRY_FILESTORE_OPTIONS = {
 ##############
 
 # You MUST configure the absolute URI root for Sentry:
-SENTRY_URL_PREFIX = 'http://sentry.online-lab.ru'  # No trailing slash!
+SENTRY_URL_PREFIX = os.environ.get('SENTRY_URL_PREFIX', 'http://sentry.online-lab.ru')
 
 # If you're using a reverse proxy, you should enable the X-Forwarded-Proto
 # header and uncomment the following settings
@@ -165,7 +165,7 @@ SENTRY_WEB_OPTIONS = {
 ###############
 
 # For more information check Django's documentation:
-#  https://docs.djangoproject.com/en/1.3/topics/email/?from=olddocs#e-mail-backends
+# https://docs.djangoproject.com/en/1.3/topics/email/?from=olddocs#e-mail-backends
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
@@ -188,6 +188,6 @@ MAILGUN_API_KEY = ''
 
 # If this file ever becomes compromised, it's important to regenerate your SECRET_KEY
 # Changing this value will result in all current sessions being invalidated
-SECRET_KEY = 'SW8l6ddSeyqARUbryuF4HMlEAS3hkuS/LM+7GeKXIbcc06N3RA5CGg=='
+SECRET_KEY = os.environ.get('SECRET_KEY', 'SW8l6ddSeyqARUbryuF4HMlEAS3hkuS/LM+7GeKXIbcc06N3RA5CGg==')
 SENTRY_FEATURES['auth:register'] = False
-execfile(os.path.join(os.path.dirname(__file__),'sentry.conf.local.py'))
+execfile('/home/user/docker-links.conf.py')
